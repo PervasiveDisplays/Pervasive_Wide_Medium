@@ -1,12 +1,12 @@
-# Pervasive Displays Library Suite - Driver for screens with colour black-white-red-yellow
+# Pervasive Displays Library Suite - Driver for screens with black-white
 
 The driver is specifically designed for the [Pervasive Displays](https://www.pervasivedisplays.com) e-paper screens, extension boards and evaluation kits.
 
 ![](https://pdls.pervasivedisplays.com/userguide/img/Logo_PDI_text_320.png)
 
-The **Driver_EPD_BWRY_Small** supports the screens
+The **Pervasive_Wide_Medium** supports the screens
 
-* Pervasive Displays iTC colour [black-white-red-yellow](https://www.pervasivedisplays.com/products/?_sft_product_colour=black-white-red-yellow) screens (film `Q`) with sizes of 1.54, 2.13 and 2.66";
+* Pervasive Displays iTC colour [black-white-red-yellow](https://www.pervasivedisplays.com/products/?_sft_product_colour=black-white-red-yellow) screens (film `Q`) with sizes of 5.81" and 7.4";
 
 the boards
 
