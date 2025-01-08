@@ -60,7 +60,7 @@ Hardware
 
 * Pervasive Displays EPD Extension Kit Gen 3 (EXT3 or EXT3.1)
 * Pervasive Displays EPD Extension Kit Gen 4 (EXT4)
-* Pervasive Displays iTC black-white-red-yellow colour screens (film `Q`)
+* Pervasive Displays iTC black-white wide-temp screens (film `K`)
 
 ## Licence
 
