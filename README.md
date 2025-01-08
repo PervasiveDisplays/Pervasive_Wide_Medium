@@ -6,7 +6,7 @@ The driver is specifically designed for the [Pervasive Displays](https://www.per
 
 The **Pervasive_Wide_Medium** supports the screens
 
-* Pervasive Displays iTC colour [black-white-red-yellow](https://www.pervasivedisplays.com/products/?_sft_product_colour=black-white-red-yellow) screens (film `Q`) with sizes of 5.81" and 7.4";
+* Pervasive Displays iTC colour [black-white](https://www.pervasivedisplays.com/products/?_sft_product_colour=black-white-red-yellow) screens (film `K`) with sizes of 5.81" and 7.4";
 
 the boards
 
@@ -25,7 +25,7 @@ The driver library can be used stand-alone or with the [Pervasive Displays Libra
 
 ## Documentation
 
-* [Application Note Small Size for Spectra 4](https://www.pervasivedisplays.com/wp-content/uploads/2023/02/ApplicationNote_Spectra_4_smallSize_EPD_v01_20230522.pdf)
+* [Application Note for Monochrome Wide Medium](https://www.pervasivedisplays.com/wp-content/uploads/2023/02/ApplicationNote_Spectra_4_smallSize_EPD_v01_20230522.pdf)
 * [Wiki](https://docs.pervasivedisplays.com/) 
 * [Pervasive Displays, Inc. (龍亭新技股份有限公司)](https://www.pervasivedisplays.com/)
 * [Product line](https://www.pervasivedisplays.com/products/)
