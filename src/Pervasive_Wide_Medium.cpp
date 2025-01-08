@@ -8,8 +8,9 @@
 //
 // Created by Rei Vilo, 21 Nov 2024
 //
-// Copyright (c) Rei Vilo, 2010-2024
+// Copyright (c) Pervasive Displays, 2010-2025
 // Licence All rights reserved
+// Portions (c) Rei Vilo, 2010-2025
 //
 // See Pervasive_Wide_Medium.h for references
 //
@@ -32,8 +33,6 @@
 //
 // === COG section
 //
-//
-
 //
 // --- Medium screens with K film
 //
@@ -95,6 +94,10 @@ void Pervasive_Wide_Medium::COG_getDataOTP()
         hV_HAL_log(LEVEL_CRITICAL, "OTP check failed - First byte 0x%02x, expected 0x%02x", COG_data[0], _chipId);
         hV_HAL_exit(0x01);
     }
+
+#if (DEBUG_OTP == 1) // Debug COG_data
+    debugOTP(COG_data, _readBytes, COG_WIDE_MEDIUM, SCREEN_DRIVER(u_eScreen_EPD));
+#endif // DEBUG_OTP
 }
 
 void Pervasive_Wide_Medium::COG_initial()
@@ -155,6 +158,7 @@ void Pervasive_Wide_Medium::COG_update(uint8_t updateMode)
     b_sendCommandData8(0xa7, 0x00);
     hV_HAL_delayMilliseconds(10);
 
+    // Temperature sequence
     b_sendCommandData8(0x44, 0x00);
     b_sendCommandData8(0x45, 0x80);
 
@@ -341,8 +345,6 @@ void Pervasive_Wide_Medium::updateFast(FRAMEBUFFER_CONST_TYPE frame, FRAMEBUFFER
     COG_sendImageDataFast(frame, frame2, sizeFrame);
 
     COG_update(UPDATE_FAST); // Update
-    COG_stopDCDC(); // Power off
-
-    // hV_HAL_SPI_end(); // With unicity check
+    COG_stopDCDC(); // Power DC/DC off
 }
 
