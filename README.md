@@ -21,6 +21,8 @@ the development kits
 
 The driver library can be used stand-alone or with the [Pervasive Displays Library Suite](https://pdls.pervasivedisplays.com/userguide/index.html). 
 
+Note: This library requires [PDLS Common](https://github.com/PervasiveDisplays/PDLS_Common).
+
 ## Documentation
 
 * [ApplicationNote_SingleChip_wideTemperature_EPD_v01_20230720]()
