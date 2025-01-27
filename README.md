@@ -58,7 +58,6 @@ Software
 Hardware
 
 * Pervasive Displays EPD Extension Kit Gen 3 (EXT3 or EXT3.1)
-* Pervasive Displays EPD Extension Kit Gen 4 (EXT4)
 * Pervasive Displays iTC screens wide temperature and embedded fast update (film `K`)
 
 ## Licence
