@@ -4,7 +4,12 @@
 */
 
 // Load Global Update Images
-#if(SCRN == 581)
+#if(SCRN == 340)
+#include "image_data/3.40/image_340_456X392_BW.c"
+#define frameSize	22344
+#define BW_monoBuffer (uint8_t *)&image_340_456X392_BW_mono
+#define BW_0x00Buffer (uint8_t *)&image_340_456X392_BW_0x00
+#elif(SCRN == 581)
 #include "image_data/5.81/image_581_720x256_BW.c"
 #include "image_data/5.81/image_581_720x256_BWR.c"
 #define frameSize	23040

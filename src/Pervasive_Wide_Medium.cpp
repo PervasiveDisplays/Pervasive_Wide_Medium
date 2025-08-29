@@ -204,18 +204,9 @@ void Pervasive_Wide_Medium::COG_update(uint8_t updateMode)
     b_sendCommandData8(0x61, COG_data[0x1b]); // STV_DIR
     // No DCTL here
     b_sendCommandData8(0x02, COG_data[0x11]); // VCOM
-    switch (u_eScreen_EPD)
-    {
-    case eScreen_EPD_741_KS_06:
-    case eScreen_EPD_581_KS_06:
 
-        b_sendCommandData8(0x03, COG_data[0x1f]); // VCOM_CTRL
-        break;
-
-    default:
-
-        break;
-    }
+	b_sendCommandData8(0x03, COG_data[0x1f]); // VCOM_CTRL
+	
 
     // DC/DC Soft-start
     // Application note § 3.3 DC/DC soft-start
