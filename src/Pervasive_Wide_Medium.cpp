@@ -77,9 +77,9 @@ void Pervasive_Wide_Medium::COG_getDataOTP()
     uint8_t _chipId;
     switch (u_eScreen_EPD)
     {
-		case eScreen_EPD_340_KS_0G:
-			_chipId = 0x17;
-			break;
+        case eScreen_EPD_340_KS_0G:
+            _chipId = 0x17;
+            break;
 
         default:
 
@@ -98,7 +98,7 @@ void Pervasive_Wide_Medium::COG_getDataOTP()
 #if (DEBUG_OTP == 1) // Debug COG_data
     debugOTP(COG_data, _readBytes, COG_WIDE_MEDIUM, SCREEN_DRIVER(u_eScreen_EPD));
 #endif // DEBUG_OTP
-	hV_HAL_SPI3_end();
+    hV_HAL_SPI3_end();
 }
 
 void Pervasive_Wide_Medium::COG_initial()
@@ -121,9 +121,9 @@ void Pervasive_Wide_Medium::COG_sendImageDataNormal(FRAMEBUFFER_CONST_TYPE nextF
     b_sendIndexData(0x12, &COG_data[0x12], 3); // RAM_RW
     b_sendIndexData(0x10, nextFrame, sizeFrame); // Next frame
 
-	// Previous frame = dummy
-	b_sendIndexData(0x12, &COG_data[0x12], 3); // RAM_RW
-	b_sendIndexFixed(0x11, 0x00, sizeFrame); // Previous frame = dummy
+    // Previous frame = dummy
+    b_sendIndexData(0x12, &COG_data[0x12], 3); // RAM_RW
+    b_sendIndexFixed(0x11, 0x00, sizeFrame); // Previous frame = dummy
 }
 
 void Pervasive_Wide_Medium::COG_sendImageDataFast(FRAMEBUFFER_CONST_TYPE nextFrame, FRAMEBUFFER_CONST_TYPE previousFrame, uint32_t sizeFrame) // First frame, blackBuffer
@@ -138,9 +138,9 @@ void Pervasive_Wide_Medium::COG_sendImageDataFast(FRAMEBUFFER_CONST_TYPE nextFra
     b_sendIndexData(0x12, &COG_data[0x12], 3); // RAM_RW
     b_sendIndexData(0x10, nextFrame, sizeFrame); // Next frame
 
-	// Previous frame
-	b_sendIndexData(0x12, &COG_data[0x12], 3); // RAM_RW
-	b_sendIndexData(0x11, previousFrame, sizeFrame); // Next frame
+    // Previous frame
+    b_sendIndexData(0x12, &COG_data[0x12], 3); // RAM_RW
+    b_sendIndexData(0x11, previousFrame, sizeFrame); // Next frame
 }
 
 void Pervasive_Wide_Medium::COG_update(uint8_t updateMode)
@@ -172,25 +172,25 @@ void Pervasive_Wide_Medium::COG_update(uint8_t updateMode)
 
     switch (updateMode)
     {
-    case UPDATE_FAST:
+        case UPDATE_FAST:
 
-        indexTemperature = (u_temperature + 0x28) + 0x80;
-        // indexTemperature = (u_temperature > 50) ? 0xda : indexTemperature;
-        // indexTemperature = (u_temperature < 0) ? 0xa8 : indexTemperature;
-        indexTemperature = checkRange(indexTemperature, (uint8_t)0xa8, (uint8_t)0xda);
-        break;
+            indexTemperature = (u_temperature + 0x28) + 0x80;
+            // indexTemperature = (u_temperature > 50) ? 0xda : indexTemperature;
+            // indexTemperature = (u_temperature < 0) ? 0xa8 : indexTemperature;
+            indexTemperature = checkRange(indexTemperature, (uint8_t)0xa8, (uint8_t)0xda);
+            break;
 
-    case UPDATE_NORMAL:
+        case UPDATE_NORMAL:
 
-        indexTemperature = u_temperature + 0x28; // Temperature 0x41@25C
-        // indexTemperature = (u_temperature > 60) ? 0x64 : indexTemperature;
-        // indexTemperature = (u_temperature < -15) ? 0x19 : indexTemperature;
-        indexTemperature = checkRange(indexTemperature, (uint8_t)0x19, (uint8_t)0x64);
-        break;
+            indexTemperature = u_temperature + 0x28; // Temperature 0x41@25C
+            // indexTemperature = (u_temperature > 60) ? 0x64 : indexTemperature;
+            // indexTemperature = (u_temperature < -15) ? 0x19 : indexTemperature;
+            indexTemperature = checkRange(indexTemperature, (uint8_t)0x19, (uint8_t)0x64);
+            break;
 
-    default:
+        default:
 
-        break;
+            break;
     }
 
     b_sendCommandData8(0x44, 0x06);
@@ -206,8 +206,8 @@ void Pervasive_Wide_Medium::COG_update(uint8_t updateMode)
     // No DCTL here
     b_sendCommandData8(0x02, COG_data[0x11]); // VCOM
 
-	b_sendCommandData8(0x03, COG_data[0x1f]); // VCOM_CTRL
-	
+    b_sendCommandData8(0x03, COG_data[0x1f]); // VCOM_CTRL
+
 
     // DC/DC Soft-start
     // Application note § 3.3 DC/DC soft-start
@@ -237,26 +237,26 @@ void Pervasive_Wide_Medium::COG_update(uint8_t updateMode)
         // uint8_t FORMAT = COG_data[offset] & 0x80;
         uint8_t REPEAT = COG_data[offset] & 0x7f;
 
-		uint8_t PHL_PHH[2];
-		PHL_PHH[0] = COG_data[offset + 1]; // PHL_INI
-		PHL_PHH[1] = COG_data[offset + 2]; // PHH_INI
-		uint8_t PHL_VAR = COG_data[offset + 3];
-		uint8_t PHH_VAR = COG_data[offset + 4];
-		uint8_t BST_SW_a = COG_data[offset + 5] & _filter09;
-		uint8_t BST_SW_b = COG_data[offset + 6] & _filter09;
-		uint8_t DELAY_SCALE = COG_data[offset + 7] & 0x80;
-		uint16_t DELAY_VALUE = COG_data[offset + 7] & 0x7f;
+        uint8_t PHL_PHH[2];
+        PHL_PHH[0] = COG_data[offset + 1]; // PHL_INI
+        PHL_PHH[1] = COG_data[offset + 2]; // PHH_INI
+        uint8_t PHL_VAR = COG_data[offset + 3];
+        uint8_t PHH_VAR = COG_data[offset + 4];
+        uint8_t BST_SW_a = COG_data[offset + 5] & _filter09;
+        uint8_t BST_SW_b = COG_data[offset + 6] & _filter09;
+        uint8_t DELAY_SCALE = COG_data[offset + 7] & 0x80;
+        uint16_t DELAY_VALUE = COG_data[offset + 7] & 0x7f;
 
-		for (uint8_t i = 0; i < REPEAT; i += 1)
-		{
-			b_sendCommandData8(0x09, BST_SW_a);
-			PHL_PHH[0] += PHL_VAR; // PHL
-			PHL_PHH[1] += PHH_VAR; // PHH
-			b_sendIndexData(0x51, PHL_PHH, 2);
-			b_sendCommandData8(0x09, BST_SW_b);
+        for (uint8_t i = 0; i < REPEAT; i += 1)
+        {
+            b_sendCommandData8(0x09, BST_SW_a);
+            PHL_PHH[0] += PHL_VAR; // PHL
+            PHL_PHH[1] += PHH_VAR; // PHH
+            b_sendIndexData(0x51, PHL_PHH, 2);
+            b_sendCommandData8(0x09, BST_SW_b);
 
-			hV_HAL_delayMilliseconds(DELAY_VALUE); // ms
-		}
+            hV_HAL_delayMilliseconds(DELAY_VALUE); // ms
+        }
     }
 
     // Display Refresh Start
