@@ -273,11 +273,25 @@ void Pervasive_Wide_Medium::COG_stopDCDC()
     // DC-DC off
     b_waitBusy();
 
-    b_sendCommandData8(0x09, 0x7f);
-    b_sendCommandData8(0x05, 0x3d);
-    b_sendCommandData8(0x09, 0x7e);
-    hV_HAL_delayMilliseconds(60);
-    b_sendCommandData8(0x09, 0x00);
+    switch (u_eScreen_EPD)
+    {
+        case eScreen_EPD_340_KS_0G:
+			b_sendCommandData8(0x09, 0x7b);
+			b_sendCommandData8(0x05, 0x3d);
+			b_sendCommandData8(0x09, 0x7a);
+			hV_HAL_delayMilliseconds(60);
+			b_sendCommandData8(0x09, 0x00);
+            break;
+
+        default:
+
+			b_sendCommandData8(0x09, 0x7f);
+			b_sendCommandData8(0x05, 0x3d);
+			b_sendCommandData8(0x09, 0x7e);
+			hV_HAL_delayMilliseconds(60);
+			b_sendCommandData8(0x09, 0x00);
+            break;
+    }
 }
 //
 // --- End of Small screens with Q film
