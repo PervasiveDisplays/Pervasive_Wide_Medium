@@ -174,7 +174,7 @@ void Pervasive_Wide_Medium::COG_update(uint8_t updateMode)
     {
         case UPDATE_FAST:
 
-            indexTemperature = (u_temperature + 0x28) + 0x80;
+            indexTemperature = (u_temperature + 0x28) + 0x80; //default is 25C but requires an external sensor for ambient temp
             // indexTemperature = (u_temperature > 50) ? 0xda : indexTemperature;
             // indexTemperature = (u_temperature < 0) ? 0xa8 : indexTemperature;
             indexTemperature = checkRange(indexTemperature, (uint8_t)0xa8, (uint8_t)0xda);
@@ -182,7 +182,7 @@ void Pervasive_Wide_Medium::COG_update(uint8_t updateMode)
 
         case UPDATE_NORMAL:
 
-            indexTemperature = u_temperature + 0x28; // Temperature 0x41@25C
+            indexTemperature = u_temperature + 0x28; // Temperature 0x41@25C; default is 25C but requires an external sensor for ambient temp
             // indexTemperature = (u_temperature > 60) ? 0x64 : indexTemperature;
             // indexTemperature = (u_temperature < -15) ? 0x19 : indexTemperature;
             indexTemperature = checkRange(indexTemperature, (uint8_t)0x19, (uint8_t)0x64);
