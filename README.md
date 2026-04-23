@@ -14,7 +14,7 @@ The **Pervasive_Wide_Medium** supports the screens
 
 the extension board
 
-* Pervasive Displays [EPD Extension Kit Gen 3 (EXT3 or EXT3.1)](https://www.pervasivedisplays.com/product/epd-extension-kit-gen-3-EXT3/);
+* Pervasive Displays [EPD Extension Kit Gen 3 (EXT3 / EXT3.1 / EXT3.2)](https://www.pervasivedisplays.com/product/epd-extension-kit-gen-3-EXT3/);
 
 the development kits
 
@@ -61,7 +61,7 @@ Software
 
 Hardware
 
-* Pervasive Displays EPD Extension Kit Gen 3 (EXT3 or EXT3.1)
+* Pervasive Displays EPD Extension Kit Gen 3 (EXT3 / EXT3.1 / EXT3.2)
 * Pervasive Displays iTC screens wide temperature and embedded fast update (film `K`)
 
 ## Licence
