@@ -6,11 +6,9 @@
 // Project Pervasive Displays Library Suite
 // Based on highView technology
 //
-// Created by Rei Vilo, 21 Nov 2024
-//
-// Copyright (c) Pervasive Displays, 2010-2025
+// Copyright (c) Pervasive Displays Inc., 2021-2026
 // Licence All rights reserved
-// Portions (c) Rei Vilo, 2010-2025
+
 //
 // See Pervasive_Wide_Medium.h for references
 //
@@ -95,10 +93,12 @@ void Pervasive_Wide_Medium::COG_getDataOTP()
         hV_HAL_exit(0x01);
     }
 
+    hV_HAL_SPI3_end();
+    u_flagOTP = true;
+
 #if (DEBUG_OTP == 1) // Debug COG_data
     debugOTP(COG_data, _readBytes, COG_WIDE_MEDIUM, SCREEN_DRIVER(u_eScreen_EPD));
 #endif // DEBUG_OTP
-    hV_HAL_SPI3_end();
 }
 
 void Pervasive_Wide_Medium::COG_initial()
@@ -276,20 +276,20 @@ void Pervasive_Wide_Medium::COG_stopDCDC()
     switch (u_eScreen_EPD)
     {
         case eScreen_EPD_340_KS_0G:
-			b_sendCommandData8(0x09, 0x7b);
-			b_sendCommandData8(0x05, 0x3d);
-			b_sendCommandData8(0x09, 0x7a);
-			hV_HAL_delayMilliseconds(60);
-			b_sendCommandData8(0x09, 0x00);
+            b_sendCommandData8(0x09, 0x7b);
+            b_sendCommandData8(0x05, 0x3d);
+            b_sendCommandData8(0x09, 0x7a);
+            hV_HAL_delayMilliseconds(60);
+            b_sendCommandData8(0x09, 0x00);
             break;
 
         default:
 
-			b_sendCommandData8(0x09, 0x7f);
-			b_sendCommandData8(0x05, 0x3d);
-			b_sendCommandData8(0x09, 0x7e);
-			hV_HAL_delayMilliseconds(60);
-			b_sendCommandData8(0x09, 0x00);
+            b_sendCommandData8(0x09, 0x7f);
+            b_sendCommandData8(0x05, 0x3d);
+            b_sendCommandData8(0x09, 0x7e);
+            hV_HAL_delayMilliseconds(60);
+            b_sendCommandData8(0x09, 0x00);
             break;
     }
 }
