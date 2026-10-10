@@ -99,9 +99,11 @@ void Pervasive_Wide_Medium::COG_getDataOTP()
     hV_HAL_SPI3_end();
     u_flagOTP = true;
 
-#if (DEBUG_OTP == 1) // Debug COG_data
+#if (DEBUG_LOG > 0)
+#if (DEBUG_OTP > 0) // Debug COG_data
     debugOTP(COG_data, _readBytes, COG_WIDE_MEDIUM, SCREEN_DRIVER(u_eScreen_EPD));
 #endif // DEBUG_OTP
+#endif // DEBUG_LOG
 }
 
 void Pervasive_Wide_Medium::COG_initial()
