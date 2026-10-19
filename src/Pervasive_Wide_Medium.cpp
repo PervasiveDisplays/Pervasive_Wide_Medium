@@ -24,6 +24,7 @@
 // Release 901: Added support for screen 340-KS-0G
 // Release 904: Updated year of copyright
 // Release 1000: Synchronised with PDLS_Common
+// Release 1011: Improved trace granualarity
 //
 
 // Header
@@ -90,7 +91,7 @@ void Pervasive_Wide_Medium::COG_getDataOTP()
     u_flagOTP = (COG_data[0] == _chipId);
     if (u_flagOTP == false)
     {
-        hV_HAL_Serial_crlf();
+        hV_HAL_log_crlf();
         hV_HAL_log(LEVEL_CRITICAL, "OTP check failed - First byte 0x%02x, expected 0x%02x", COG_data[0], _chipId);
         hV_HAL_exit(0x01);
     }
@@ -98,9 +99,11 @@ void Pervasive_Wide_Medium::COG_getDataOTP()
     hV_HAL_SPI3_end();
     u_flagOTP = true;
 
-#if (DEBUG_OTP == 1) // Debug COG_data
+#if (DEBUG_LOG > 0)
+#if (DEBUG_OTP > 0) // Debug COG_data
     debugOTP(COG_data, _readBytes, COG_WIDE_MEDIUM, SCREEN_DRIVER(u_eScreen_EPD));
 #endif // DEBUG_OTP
+#endif // DEBUG_LOG
 }
 
 void Pervasive_Wide_Medium::COG_initial()
